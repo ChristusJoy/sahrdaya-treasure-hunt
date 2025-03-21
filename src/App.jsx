@@ -5,13 +5,15 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import AdminDashboard from "./components/AdminDashboard";
 import UserDashboard from "./components/UserDashboard";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/admin"
@@ -27,7 +29,7 @@ function App() {
               <PrivateRoute role="user">
                 <UserDashboard />
               </PrivateRoute>
-              
+
             }
           />
         </Routes>
