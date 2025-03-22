@@ -25,7 +25,8 @@ const Login = () => {
       if (sessionSnap.exists()) {
         // If session exists, force logout previous session
         await signOut(auth);
-        return setError("You are logged in on another device.");
+        await deleteDoc(doc(db, "sessions", currentUser.uid));
+        return setError("Error deleting session. Please try again.");
       }
 
       // Save new session in Firestore
